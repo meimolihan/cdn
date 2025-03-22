@@ -250,7 +250,7 @@ inject:
   head:
     - <link rel="stylesheet" href="/css/cat.css">
   bottom:
-    - <script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script>
+    - <script defer src="https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/cat/jquery.min.js"></script>
     - <script defer data-pjax src="/js/cat.js"></script>
 ```
 
