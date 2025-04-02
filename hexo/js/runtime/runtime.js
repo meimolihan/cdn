@@ -27,9 +27,9 @@ function createtime() {
 
     let g = "";
     if (r < 18 && r >= 9) {
-        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtimehexo/js/runtime/墨不凡-搬砖中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
+        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtime/墨不凡-搬砖中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
     } else {
-        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtimehexo/js/runtime/墨不凡-休闲中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
+        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtime/墨不凡-休闲中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
     }
 
     if (document.getElementById("workboard")) {
