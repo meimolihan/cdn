@@ -157,6 +157,12 @@ div#runtime {
 }    
 ```
 
+在主题配置文件 `[BlogRoot]\_config.butterfly.yml` 文件中的引用
+
+```yaml
+```
+
+
 
 **重启项目即可看到效果：**
 
