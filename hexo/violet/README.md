@@ -14,10 +14,10 @@ npm install hexo-butterfly-envelope --save
 envelope_comment:
   enable: true #控制开关
   custom_pic:      
-    cover: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/violet/violet.webp #信笺头部图片
-    line: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/violet/line.png #信笺底部图片
-    beforeimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/violet/before.png # 信封前半部分
-    afterimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/violet/after.png # 信封后半部分
+    cover: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/violet.webp #信笺头部图片
+    line: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/line.png #信笺底部图片
+    beforeimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/before.png # 信封前半部分
+    afterimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/after.png # 信封后半部分
   message: #信笺正文，多行文本，写法如下
     - 有什么想问的？
     - 有什么想说的？
