@@ -1,10 +1,10 @@
 # 【Hexo + Butterfly】 增加动画特效
 
-<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-butterfly-wowjs/animate.min.css>
+<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/wowjs/animate.min.css>
 
-<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-butterfly-wowjs/wow.min.js>
+<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/wowjs/wow.min.js>
 
-<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-butterfly-wowjs/wow_init.js>
+<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/wowjs/wow_init.js>
 
 ---
 
