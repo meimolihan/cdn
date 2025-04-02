@@ -2,7 +2,7 @@
 
 **<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtimehexo/js/runtime/墨不凡-休闲中.svg>**
 
-**<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtimehexo/js/runtime/runtime.js>**
+**<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtime/runtime.js>**
 
 ## 页脚徽标和计时器
 
