@@ -9,6 +9,7 @@
 ---
 
 ##【Hexo + Butterfly】 增加动画特效
+
 ### 安装插件
 - Hexo 博客根目录执行命令：
 ```bash
@@ -32,7 +33,7 @@ wowjs:
       iteration: 1 #选填项，动画重复的次数
     - class: card-widget
       style: animate__zoomIn
-  animate_css: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-butterfly-wowjs/animate.min.css
-  wow_js: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-butterfly-wowjs/wow.min.js
-  wow_init_js: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-butterfly-wowjs/wow_init.js
+  animate_css: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/wowjs/animate.min.css
+  wow_js: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/wowjs/wow.min.js
+  wow_init_js: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/wowjs/wow_init.js
 ```
