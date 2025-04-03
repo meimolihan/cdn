@@ -1,8 +1,19 @@
-// 检测是否为移动设备
+// 更全面的移动设备检测函数
 function isMobileDevice() {
-    return (typeof window.orientation !== "undefined") ||
-        (navigator.userAgent.indexOf('IEMobile') !== -1) ||
-        (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Mobile/i.test(navigator.userAgent));
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // 检查常见移动设备标识
+    const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent);
+    
+    // 检查Chrome移动版特有标识
+    const isChromeMobile = /Chrome\/[.0-9]* Mobile|CriOS\/[.0-9]*/i.test(userAgent);
+    
+    // 检查屏幕尺寸和触摸支持
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const smallScreen = window.innerWidth <= 768 && window.innerHeight <= 1024;
+    
+    // 综合考虑多种因素，排除Chrome移动版
+    return (isMobile || (hasTouch && smallScreen)) && !isChromeMobile;
 }
 
 // 只在非移动设备上启用反调试功能
