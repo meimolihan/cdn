@@ -1,6 +1,8 @@
 # 博客背景切换
 
-<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-winbox/winbox.bundle.min.js>
+**<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo-winbox/winbox.bundle.min.js>**
+
+**<https://cdn.meimolihan.eu.org/hexo/js/winbox.bundle.min.js>**
 
 ---
 
@@ -53,7 +55,7 @@ when 'comment'
 
 
 
-**创建 `博客根目录/source/js/xxx.js`**
+**创建 `博客根目录/source/js/bizhi.js`**
 
 ```javascript
 // 存数据
@@ -168,7 +170,7 @@ function toggleWinbox() {
 
 
 
-**创建 `博客根目录/source/css/xxx.css`**
+**创建 `博客根目录/source/css/bizhi.css`**
 
 
 
@@ -247,15 +249,17 @@ function toggleWinbox() {
 ```
 
 
-**引入 `xxx.js和xxx.css`**
+**引入 `bizhi.js和bizhi.css`**
 
 ```yaml
 inject:
   head:
-    - <link rel="stylesheet" href="/css/xxx.css">
+    # 注入自定义css
+    - <link rel="stylesheet" href="/css/bizhi.css"> # 切换壁纸
   bottom:
-    - <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script> # 引入 winbox
-    - <script src="/js/xxx.js"></script> # 这个代表自定义js，放在最下面
+  	# 注入自定义js
+    - <script src="https://cdn.meimolihan.eu.org/hexo/js/winbox.bundle.min.js"></script> # 切换壁纸 1（必须在（切换壁纸 2）前面引入）
+    - <script src="https://cdn.meimolihan.eu.org/hexo/js/bizhi.js"></script> # 切换壁纸 2
 ```
 
 

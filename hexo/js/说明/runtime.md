@@ -1,8 +1,18 @@
+套用外部CDN： https://www.jsdelivr.com/
+
 **<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/img/墨不凡-搬砖中.svg>**  
 
 **<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/img/墨不凡-休闲中.svg>**
 
 **<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/js/runtime.js>**
+
+个人CDN：https://vercel.com/
+
+**<https://cdn.meimolihan.eu.org/hexo/img/墨不凡-搬砖中.svg>**  
+
+**<https://cdn.meimolihan.eu.org/hexo/img/墨不凡-休闲中.svg>**
+
+**<https://cdn.meimolihan.eu.org/hexo/js/runtime.js>**
 
 ## 页脚徽标和计时器
 
@@ -80,9 +90,9 @@ function createtime() {
 
     let g = "";
     if (r < 18 && r >= 9) {
-        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/img/墨不凡-搬砖中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
+        g = `<img class='boardsign' src='https://cdn.meimolihan.eu.org/hexo/img/墨不凡-搬砖中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
     } else {
-        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/img/凡凡-休闲中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
+        g = `<img class='boardsign' src='https://cdn.meimolihan.eu.org/hexo/img/凡凡-休闲中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
     }
 
     if (document.getElementById("workboard")) {
@@ -160,6 +170,12 @@ div#runtime {
 在主题配置文件 `[BlogRoot]\_config.butterfly.yml` 文件中的引用
 
 ```yaml
+inject:
+  head:
+    # 注入自定义css
+  bottom:
+  	# 注入自定义js
+    - <script src="https://cdn.meimolihan.eu.org/hexo/js/runtime.js"></script> # 脚页徽标
 ```
 
 

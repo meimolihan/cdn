@@ -1,42 +1,35 @@
+/* 页脚计时器 start */
 var now = new Date();
-
 function createtime() {
-    var t = new Date("01/01/2025 00:00:00");
-    now.setTime(now.getTime() + 250);
-
-    var e = (now - t) / 1e3 / 60 / 60 / 24;
-    var a = Math.floor(e);
-
-    var n = (now - t) / 1e3 / 60 / 60 - 24 * a;
-    var r = Math.floor(n);
-    if (String(r).length === 1) {
-        r = "0" + r;
-    }
-
-    var s = (now - t) / 1e3 / 60 - 1440 * a - 60 * r;
-    var i = Math.floor(s);
-    if (String(i).length === 1) {
-        i = "0" + i;
-    }
-
-    var o = (now - t) / 1e3 - 86400 * a - 3600 * r - 60 * i;
-    var l = Math.round(o);
-    if (String(l).length === 1) {
-        l = "0" + l;
-    }
-
-    let g = "";
-    if (r < 18 && r >= 9) {
-        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/img/墨不凡-搬砖中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
-    } else {
-        g = `<img class='boardsign' src='https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/img/凡凡-休闲中.svg' title=''><span class='textTip'> <br> 本站已运行： ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`;
-    }
-
-    if (document.getElementById("workboard")) {
-        document.getElementById("workboard").innerHTML = g;
-    }
+    // 当前时间
+    now.setTime(now.getTime() + 1000);
+    var start = new Date("01/01/2025 00:00:00"); // 旅行者1号开始计算的时间
+    var dis = Math.trunc(23400000000 + ((now - start) / 1000) * 17); // 距离=秒数*速度 记住转换毫秒
+    var unit = (dis / 149600000).toFixed(6);  // 天文单位
+    // 网站诞生时间
+    var grt = new Date("08/09/2022 00:00:00");
+    var days = (now - grt) / 1e3 / 60 / 60 / 24,
+        dnum = Math.floor(days),
+        hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,
+        hnum = Math.floor(hours);
+    1 == String(hnum).length && (hnum = "0" + hnum);
+    var minutes = (now - grt) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+        mnum = Math.floor(minutes);
+    1 == String(mnum).length && (mnum = "0" + mnum);
+    var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+        snum = Math.round(seconds);
+    1 == String(snum).length && (snum = "0" + snum);
+    let currentTimeHtml = "";
+    (currentTimeHtml =
+        hnum < 18 && hnum >= 9
+            ? `<img class='boardsign' src='https://cdn.meimolihan.eu.org/hexo/img/墨不凡-搬砖中.svg' title='什么时候能够实现财富自由呀~'><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`
+            : `<img class='boardsign' src='https://cdn.meimolihan.eu.org/hexo/img/墨不凡-休闲中.svg' title='下班了就该开开心心地玩耍~'><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`),
+    document.getElementById("workboard") &&
+    (document.getElementById("workboard").innerHTML = currentTimeHtml);
 }
-
+// 设置重复执行函数，周期1000ms
 setInterval(() => {
     createtime();
-}, 250);
+}, 1000);
+
+/*页脚计时器 end */

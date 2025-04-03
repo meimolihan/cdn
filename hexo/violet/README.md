@@ -1,6 +1,22 @@
 # violet留言板
 
-在[BlogRoot]运行指令
+套用外部CDN： https://www.jsdelivr.com/
+
+```yaml
+    cover: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/violet.webp #信笺头部图片
+    line: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/line.png #信笺底部图片
+    beforeimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/before.png # 信封前半部分
+    afterimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/after.png # 信封后半部分
+```
+
+个人CDN：https://vercel.com/
+
+    cover: https://cdn.meimolihan.eu.org/hexo/violet/violet.webp #信笺头部图片
+    line: https://cdn.meimolihan.eu.org/hexo/violet/line.png #信笺底部图片
+    beforeimg: https://cdn.meimolihan.eu.org/hexo/violet/before.png # 信封前半部分
+    afterimg: https://cdn.meimolihan.eu.org/hexo/violet/after.png # 信封后半部分
+
+**在[BlogRoot]运行指令**
 
 ```bash
 npm install hexo-butterfly-envelope --save
