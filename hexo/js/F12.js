@@ -1,22 +1,11 @@
-// 更全面的移动设备检测函数
+// 检测是否为移动设备（1.0.0）
 function isMobileDevice() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // 检查常见移动设备标识
-    const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent);
-    
-    // 检查Chrome移动版特有标识
-    const isChromeMobile = /Chrome\/[.0-9]* Mobile|CriOS\/[.0-9]*/i.test(userAgent);
-    
-    // 检查屏幕尺寸和触摸支持
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const smallScreen = window.innerWidth <= 768 && window.innerHeight <= 1024;
-    
-    // 综合考虑多种因素，排除Chrome移动版
-    return (isMobile || (hasTouch && smallScreen)) && !isChromeMobile;
+    return (typeof window.orientation !== "undefined") ||
+        (navigator.userAgent.indexOf('IEMobile') !== -1) ||
+        (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Mobile/i.test(navigator.userAgent));
 }
 
-// 只在非移动设备上启用反调试功能
+// 修复移动设备 Chrome 浏览器的控制台检测问题
 if (!isMobileDevice()) {
     // 调试器检测
     (function() {
@@ -64,22 +53,17 @@ if (!isMobileDevice()) {
         window.location.reload();
     });
 
-    // 控制台打开检测
-    function checkDevTools() {
-        let num = 0;
-        let devtools = new Date();
-        devtools.toString = function() {
-            num++;
-            if (num > 1) {
-                document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;'>请勿使用开发者工具</h1>";
-                window.location.href = "about:blank";
-            }
-        };
-        console.log('%c', devtools);
+    // 修复后的控制台打开检测
+    function checkConsoleOpen() {
+        // 检测 console 是否被修改
+        if (console._commandLineAPI) {
+            document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;'>请勿使用开发者工具</h1>";
+            window.location.href = "about:blank";
+        }
     }
 
     // 每5秒检查一次
-    setInterval(checkDevTools, 5000);
+    setInterval(checkConsoleOpen, 5000);
 
     // 快捷键禁用
     document.addEventListener('keydown', function(e) {
@@ -93,4 +77,7 @@ if (!isMobileDevice()) {
             return false;
         }
     });
+} else {
+    // 移动设备上的特殊处理
+    console.log("移动设备检测到，已禁用控制台检测");
 }
