@@ -8,3 +8,5 @@
 
 <https://cdn.meimolihan.eu.org/hexo/img/001.png>
 
+<https://cdn.meimolihan.eu.org/hexo/img/color.png>
+
