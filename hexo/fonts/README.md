@@ -1,5 +1,11 @@
 ## 引用字体
 
+<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/fonts/ZhuZiAWan.woff2>
+
+<https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/fonts/dingliezhuhaifont.woff2>
+
+
+
 >  字体天下： <https://www.fonts.net.cn/font-32027849465.html>
 >  谷歌字体,：<http://www.googlefonts.net/chinese>
 

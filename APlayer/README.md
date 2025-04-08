@@ -2,5 +2,5 @@
 
 
 
-<https://cdn.meimolihan.eu.org/hexo/APlayer/APlayer.min.js>
+<https://cdn.meimolihan.eu.org/APlayer/APlayer.min.js>
 
