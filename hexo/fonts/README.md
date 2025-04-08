@@ -1,5 +1,13 @@
 ## 引用字体
 
+
+
+<https://cdn.meimolihan.eu.org/hexo/fonts/ZhuZiAWan.woff2>
+
+<https://cdn.meimolihan.eu.org/hexo/fonts/dingliezhuhaifont.woff2>
+
+
+
 <https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/fonts/ZhuZiAWan.woff2>
 
 <https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/fonts/dingliezhuhaifont.woff2>
