@@ -23,6 +23,7 @@ goto MENU
 :CHECK_STATUS
 echo 正在检查Git仓库状态...
 git status
+echo 检查完成！请根据提示确认文件状态。
 pause
 goto MENU
 
@@ -33,19 +34,30 @@ if "%commit_msg%"=="" set commit_msg=update
 
 echo 正在添加所有更改到暂存区...
 git add .
+echo 添加完成！
+
 echo 正在提交更改，提交信息为：%commit_msg%
 git commit -m "%commit_msg%"
+echo 提交完成！
+
 echo 正在推送更改到远程仓库...
 git push
+echo 推送完成！您的更改已成功同步到远程仓库。
+
 pause
 goto MENU
 
 :PULL_UPDATE
 echo 正在从远程仓库拉取更新...
 git pull
+if %errorlevel% equ 0 (
+    echo 拉取成功！本地仓库已是最新版本。
+) else (
+    echo 拉取失败！请检查网络或远程仓库地址是否正确。
+)
 pause
 goto MENU
 
 :EXIT_SCRIPT
-echo 脚本已退出。
+echo 脚本已退出，感谢使用！
 exit
