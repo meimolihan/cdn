@@ -1,4 +1,6 @@
 @echo off
+color 0A
+
 :MENU
 cls
 echo ==============================
@@ -7,14 +9,14 @@ echo ==============================
 echo 1. 检查Git仓库状态
 echo 2. 提交并推送更改
 echo 3. 拉取远程更新
-echo 6. 退出
+echo 0. 退出
 echo ==============================
-set /p choice=请输入选项（1/2/3/6）： 
+set /p choice=请输入选项（1/2/3/0）： 
 
 if "%choice%"=="1" goto CHECK_STATUS
 if "%choice%"=="2" goto COMMIT_PUSH
 if "%choice%"=="3" goto PULL_UPDATE
-if "%choice%"=="6" goto EXIT_SCRIPT
+if "%choice%"=="0" goto EXIT_SCRIPT
 
 echo 无效选项，请重新选择...
 pause
