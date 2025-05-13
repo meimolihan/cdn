@@ -98,7 +98,7 @@ cls
 REM 使用当前目录作为Git仓库路径
 SET REPO_PATH=%CD%
 
-echo 当前处理的Git仓库路径：%REPO_PATH%
+echo 当前仓库路径：%REPO_PATH%
 echo ==============================
 
 REM 检查是否为有效的Git仓库
@@ -164,6 +164,7 @@ IF %ERRORLEVEL% EQU 0 (
 ) ELSE (
     echo 标签 %tag_name% 推送失败，请手动检查。
 )
+echo 当前仓库路径：%REPO_PATH%
 echo ==============================
 pause
 goto MENU
