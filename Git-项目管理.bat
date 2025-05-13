@@ -7,33 +7,37 @@ cls
 echo ==============================
 echo         Git 项目管理脚本
 echo ==============================
-echo * 1. 检查仓库的状态
+echo * 1. 检查当前仓库状态
 echo.
-echo * 2. 提交并推送更改
+echo * 2. 推送当前仓库更改
 echo.
-echo * 3. 拉取远程的更新
+echo * 3. 拉取当前仓库更新
 echo.
-echo * 4. 提交并更新标签
+echo * 4. 更改当前仓库标签
+echo ==============================
+echo * 5. 推送所有仓库更新
+echo.
+echo * 6. 拉取所有仓库更新
 echo ==============================
 echo * 0. 退出
 echo ==============================
-    set "choice="
-    set /p choice="请输入操作编号 (0 - 3): "
-    if not defined choice (
-        echo 输入不能为空，请输入（0 - 3）之间的数字。
-        timeout /t 2 >nul
-		rem 定义要返回的菜单
-        goto MENU
-    )
+set /p choice="请输入操作编号 (0 - 6): "
+
+
 
 if "%choice%"=="1" goto CHECK_STATUS
 if "%choice%"=="2" goto COMMIT_PUSH
 if "%choice%"=="3" goto PULL_UPDATE
 if "%choice%"=="4" goto UPDATE_GIT_TAG
-if "%choice%"=="0" goto EXIT_SCRIPT
+if "%choice%"=="5" goto GIT_PUSH_ALL
+if "%choice%"=="6" goto GIT_PUSH_ALL
+if "%choice%"=="0" goto GIT_UPDATE_ALL
 
+echo 无效选项，请重新选择...
+pause
+goto MENU
 
-echo ============= 检查Git仓库状态 =================
+echo ============= 一 、 检查Git仓库状态 =================
 :CHECK_STATUS
 cls
 echo ==============================
@@ -46,7 +50,7 @@ echo ==============================
 pause
 goto MENU
 
-echo ============= 提交并推送更改 =================
+echo ============= 二 、提交并推送更改 =================
 :COMMIT_PUSH
 cls
 echo ========================================
@@ -75,7 +79,7 @@ echo ========================================
 pause
 goto MENU
 
-echo ============= 拉取远程更新 =================
+echo ============= 三 、拉取远程更新 =================
 :PULL_UPDATE
 cls
 echo ========================================
@@ -92,7 +96,7 @@ pause
 goto MENU
 
 
-echo ============= 提交并更新标签 =================
+echo ============= 四 、提交并更新标签 =================
 :UPDATE_GIT_TAG
 cls
 REM 使用当前目录作为Git仓库路径
@@ -170,7 +174,72 @@ pause
 goto MENU
 
 
-echo ==============================
+echo ============= 五 、推送所有仓库更新 =================
+:GIT_PUSH_ALL
+cls
+:: 设置要遍历的目录路径（可修改为你的目标路径）
+set "target_dir=%~dp0"
+echo 目标目录: %target_dir%
+
+:: 遍历目标目录下的所有子目录
+for /D %%i in ("%target_dir%\*") do (
+    :: 检查是否是Git仓库
+    if exist "%%i\.git" (
+        echo ============================================
+        echo 正在处理仓库: %%~nxi
+        echo ============================================
+        
+        :: 进入仓库目录
+        pushd "%%i"
+        
+        :: 执行Git操作
+        git add .
+        git commit -m "update"
+        git pull --rebase
+        git push
+        
+        :: 返回上级目录
+        popd
+        
+        echo ============================================
+        echo 仓库 %%~nxi 处理完成
+        echo ============================================
+        echo.
+    ) else (
+        echo 跳过非Git仓库: %%~nxi
+    )
+)
+
+echo 所有有效Git仓库处理完毕
+echo ============================================
+pause
+goto MENU 
+
+
+echo ============= 六 、拉取所有仓库更新 =================
+:GIT_UPDATE_ALL
+cls
+echo ============================================
+echo      正在扫描目录及子目录中的 Git 仓库...
+echo ============================================
+for /d /r "." %%d in (.) do (
+    if exist "%%d\.git" (
+        echo.
+        echo 检测到 Git 仓库: %%d
+        cd /d "%%d"
+        echo 正在拉取远程更新...
+        git pull
+        echo.
+        echo 拉取完成: %%d
+        echo ============================================
+    )
+)
+
+echo 扫描完成！
+pause
+goto MENU 
+
+echo ============================================
 :EXIT_SCRIPT
 echo 感谢使用，再见！
 timeout /t 2 >nul
