@@ -29,13 +29,14 @@ menu:
 以下所有配置均需添加到主题配置文件 `_config.butterfly.yml` 中。
 
 ```yaml
+# see https://akilar.top/posts/e2d3c450/
 envelope_comment:
   enable: true #控制开关
-  custom_pic:      
-    cover: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/violet.webp #信笺头部图片
-    line: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/line.png #信笺底部图片
-    beforeimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/before.png # 信封前半部分
-    afterimg: https://cdn.jsdelivr.net/gh/meimolihan/cdn@v1.0.0/hexo/violet/after.png # 信封后半部分
+  custom_pic:
+    cover: https://cdn.meimolihan.eu.org/hexo/violet/violet.webp #信笺头部图片
+    line: https://cdn.meimolihan.eu.org/hexo/violet/line.png #信笺底部图片
+    beforeimg: https://cdn.meimolihan.eu.org/hexo/violet/before.png # 信封前半部分
+    afterimg: https://cdn.meimolihan.eu.org/hexo/violet/after.png # 信封后半部分
   message: #信笺正文，多行文本，写法如下
     - 有什么想问的？
     - 有什么想说的？
