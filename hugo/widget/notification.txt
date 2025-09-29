@@ -1,6 +1,5 @@
 <style>
-/* ========= 公告样式 ========= */
-.widget-announcement {
+.widget-notification {
   border: 1px solid #ddd;
   border-radius: 25px;
   background: #fff;      
@@ -12,15 +11,11 @@
   font-family: 'Microsoft YaHei', sans-serif;
   font-size: 13px;
 }
-
-/* 夜间模式 */
-[data-scheme="dark"] .widget-announcement {
-  background: #3f3f3f;   /* 深灰底 */
-  color: #fff;           /* 白字 */
+[data-scheme="dark"] .widget-notification {
+  background: #3f3f3f;
+  color: #fff;
   border-color: transparent;
 }
-
-/* ===== 小喇叭抖动动画 ===== */
 @keyframes shake {
   0%   { transform: rotate(0deg); }
   10%  { transform: rotate(-8deg); }
@@ -30,14 +25,13 @@
   50%  { transform: rotate(0deg); }
   100% { transform: rotate(0deg); }
 }
-.widget-announcement .icon {
+.widget-notification .icon {
   display: inline-block;
   animation: shake 1s ease-in-out infinite;
 }
 </style>
 
-<!-- 公告栏 -->
-<div class="widget-announcement">
+<div class="widget-notification">
   <span class="icon">📢</span>
   本站镜像站：
   <a href="https://www.meimolihan.eu.org/"
