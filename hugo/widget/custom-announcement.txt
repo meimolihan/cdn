@@ -1,0 +1,50 @@
+<style>
+/* ========= 公告样式 ========= */
+.widget-announcement {
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  background: #fff;      
+  color: #000;           
+  /* 加宽：原来 480px → 680px（可再自行调） */
+  max-width: 680px;
+  /* 加高：原来 12px 16px → 22px 26px */
+  padding: 22px 60px;
+  margin: 0px auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1);
+  font-family: 'Microsoft YaHei', sans-serif;
+  font-size: 13px;
+}
+
+/* 夜间模式 */
+[data-scheme="dark"] .widget-announcement {
+  background: #3f3f3f;   /* 深灰底 */
+  color: #fff;           /* 白字 */
+  border-color: transparent;
+}
+
+/* ===== 小喇叭抖动-停顿动画 ===== */
+@keyframes shake {
+  0%   { transform: rotate(0deg); }
+  10%  { transform: rotate(-8deg); }
+  20%  { transform: rotate(8deg); }
+  30%  { transform: rotate(-6deg); }
+  40%  { transform: rotate(6deg); }
+  50%  { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+.widget-announcement .icon {
+  display: inline-block;
+  animation: shake 1s ease-in-out infinite;
+}
+</style>
+
+<!-- 新公告 -->
+<div class="widget-announcement">
+  <span class="icon">📢</span>
+  本站镜像站：
+  <a href="https://www.meimolihan.eu.org/"
+     style="color:#5ea6e5;text-decoration:none;font-weight:bold;"
+     target="_blank" rel="noopener">
+     Hexo 镜像站
+  </a>
+</div>
