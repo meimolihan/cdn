@@ -1,0 +1,61 @@
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+{{ with resources.Get "js/topbar.min.js" }}
+    <!-- 引入本地JS脚本 -->
+    <script src={{ .Permalink }}></script>
+{{ end }}
+
+<script>
+	var pjax = new Pjax({
+		elements: "a, form",
+		selectors: [
+			"title",
+			".main-container",
+			".js-Pjax"
+		],
+		cacheBust: false
+	})
+
+	pjax._handleResponse = pjax.handleResponse;
+	pjax.handleResponse = function(responseText, request, href, options) {
+		if (request.responseText.match("<html")) {
+			
+			if (responseText) {
+				let newDoc = new DOMParser().parseFromString(responseText, 'text/html');
+				let bodyClass = newDoc.body.className;
+				document.body.setAttribute("class", bodyClass)
+			}
+			
+			pjax._handleResponse(responseText, request, href, options);
+		} else {
+			window.open(href)
+			topbar.hide();
+		}
+	}
+
+	topbar.config({
+		barColors: {
+			'0': 'rgba(255,  255, 255, 1)',
+			'1.0': 'rgba(0, 149, 234,  1)'
+		}
+	})
+
+	document.addEventListener('pjax:send', () => {
+		topbar.show();  // 显示顶部进度条
+	})
+
+	
+	document.addEventListener('pjax:complete', () => {
+		window.Stack.init();
+		topbar.hide();
+		initTocHide();
+		initScrollTop();  // 重新初始化返回顶部按钮
+		initCodeMoreBox()
+		showWelcomeMessage();
+		renderKaTeX();
+		initFlipClock();
+                clstr_globe();
+	})
+</script>
+
+
