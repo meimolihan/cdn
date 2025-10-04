@@ -1,17 +1,22 @@
+<div class="widget-notification">
+  <span class="icon">📢</span>
+  本站镜像站：
+  <a href="https://www.meimolihan.eu.org/"
+     style="color:#009f8a;text-decoration:none;font-weight:bold;"
+     target="_blank" rel="noopener">
+     Hexo 镜像站
+  </a>
+</div>
+
 <style>
 .widget-notification {
   border: 1px solid #ddd;
-  border-radius: 25px;
-  background: #fff;      
-  color: #000;           
-  max-width: 680px;
-  padding: 21px 40px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  font-family: inherit;
+  border-radius: 15px;
   font-weight: bold;
-  font-size: 16px;
-  transition: transform .3s ease;
+  padding-left: 30px !important;
+  padding-top: 15px;      /* 上边距 */
+  padding-bottom: 15px;   /* 下边距 */
+  transition: transform 0.3s ease;  /* 鼠标悬停-卡片放大 */
 }
 
 /* 鼠标悬停时放大 */
@@ -38,12 +43,3 @@
 }
 </style>
 
-<div class="widget-notification">
-  <span class="icon">📢</span>
-  本站镜像站：
-  <a href="https://www.meimolihan.eu.org/"
-     style="color:#009f8a;text-decoration:none;font-weight:bold;"
-     target="_blank" rel="noopener">
-     Hexo 镜像站
-  </a>
-</div>

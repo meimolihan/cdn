@@ -1,0 +1,72 @@
+<!-- 左侧顶部滑入弹窗（完全收回版） -->
+<div id="copyToast" class="snack-left-top">哎嘿！复制成功🍬</div>
+
+<script>
+/* ====== 代码块复制 ====== */
+(() => {
+  const toast = document.getElementById('copyToast');
+  const show = (msg = '哎嘿！复制成功🍬') => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  };
+
+  /* 1. 代码块按钮点击 */
+  document.querySelector('.article-content').addEventListener('click', e => {
+    if (!e.target.matches('.copyCodeButton')) return;
+    const wrap  = e.target.closest('pre') || e.target.closest('.highlight');
+    const codeTd = wrap?.querySelector('td:nth-child(2)') || wrap;
+    const text = codeTd ? codeTd.textContent.trim() : '';
+    navigator.clipboard.writeText(text)
+      .then(() => show())
+      .catch(err => alert('复制失败：'+err));
+  });
+
+  /* 2. 全局选中复制（任何文本） */
+  document.addEventListener('copy', (e) => {
+    e.preventDefault();
+    const selectedText = window.getSelection().toString().trim();
+    if (!selectedText) return;
+    navigator.clipboard.writeText(selectedText)
+      .then(() => show('哎嘿！复制成功🍬'))
+      .catch(err => console.warn(err));
+  });
+})();
+</script>
+
+<style>
+/* ===== 复制按钮 ===== */
+.copyCodeButton{
+  position:absolute;top:8px;right:8px;border-radius:4px;border:1px solid #333;
+  background:#3d3c3c;color:#fff;padding:4px 8px;font-size:12px;cursor:pointer;
+  transition:background .2s;
+}
+.copyCodeButton:hover{background:var(--hover-text-color);color:#fff}
+
+/* ===== 左侧顶部滑入 Toast ===== */
+.snack-left-top{
+  position:fixed;
+  left:20px;                                      /* 左侧 20 px 边距 */
+  top:calc(20px + env(safe-area-inset-top, 0px)); /* 顶部 20 px + 安全区 */
+  transform:translateX(calc(-100% - 20px));       /* 完全藏在屏幕外 */
+  max-width:70%;
+  margin:0;
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  background:var(--hover-text-color);
+  color:#fff;
+  box-shadow:4px 4px 14px rgba(0,0,0,.35);
+  z-index:9999;
+  font-size:16px;
+  font-weight:bold;
+  line-height:1.4;
+  white-space:nowrap;
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* 显示态：滑入到 left:20px 位置 */
+.snack-left-top.show{
+  transform:translateX(0);
+}
+</style>

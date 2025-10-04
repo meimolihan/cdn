@@ -43,3 +43,29 @@ renderRuntime();
 // PJAX 完成后重新渲染
 document.addEventListener('pjax:success', renderRuntime);
 </script>
+
+<style>
+.count_info {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 12px;
+  padding-left: 30px !important; /* 调整内容与容器左侧边缘的距离 */
+  transition: transform 0.2s ease;  /* 鼠标悬停-卡片放大 */
+}
+.count_info:hover {
+  transform: scale(1.06);  /* 鼠标悬停-分类卡片放大 */
+}
+.number-highlight {
+  color: var(--hover-text-color); /* 数值颜色修改 */
+  font-weight: 600;
+}
+[data-scheme="dark"] .count_info {
+  border: 1px solid #39393900;
+  padding: 12px;
+  border-radius: 20px;
+  background: #3f3f3f;
+  padding-left: 30px !important; /* 调整内容与容器左侧边缘的距离 */
+  color: #fff;
+}
+</style>
