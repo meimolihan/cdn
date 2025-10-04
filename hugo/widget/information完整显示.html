@@ -1,0 +1,55 @@
+<section class="count_info">
+  <div>
+    {{ T "footer.runtime1" }}
+    <span id="ds" class="running-days number-highlight"></span>
+    {{ T "footer.runtime2" }}
+    <span id="hs" class="running-days number-highlight"></span>
+    {{ T "footer.runtime3" }}
+    <span id="ms" class="running-days number-highlight"></span>
+    {{ T "footer.runtime4" }}
+  </div>
+
+<div>
+  {{ $scratch := newScratch }}
+  {{ range where .Context.Site.RegularPages "Section" "post" }}
+    {{ $scratch.Add "total" .WordCount }}
+  {{ end }}
+
+  {{ T "footer.count1" }}
+  <span class="number-highlight">
+    {{ len (where .Context.Site.RegularPages "Section" "post") }}
+  </span>
+  {{ T "footer.count2" }}
+  <span class="number-highlight">
+    {{ div ($scratch.Get "total" | default 0) 1000.0 | lang.FormatNumber 2 }}
+  </span>
+  k {{ T "footer.count3" }}
+</div>
+
+  <div>
+    <span id="busuanzi_container_site_pv">
+      {{ T "footer.pv1" }}
+      <span id="busuanzi_value_site_pv" class="number-highlight"></span>
+      {{ T "footer.pv2" }}
+    </span>
+  </div>
+</section>
+
+<script>
+function renderRuntime(){
+  const s1 = new Date('2025-01-01');
+  const ds = Math.floor((Date.now() - s1) / 86400000);
+  const dEl = document.getElementById('ds');
+  if(dEl) dEl.textContent = ds;
+
+  // 不蒜子高亮
+  document.querySelectorAll('#busuanzi_value_site_pv')
+          .forEach(el=>el.classList.add('number-highlight'));
+}
+
+// 首次加载
+renderRuntime();
+
+// PJAX 完成后重新渲染
+document.addEventListener('pjax:success', renderRuntime);
+</script>

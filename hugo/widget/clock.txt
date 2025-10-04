@@ -1,88 +1,72 @@
-<div>
-  <div class='clock-wrapper'>
-    <div class='clock-border'>
-      <div class='clock'>
-        <ul class='minute-marks'>
-          <li class='five'></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li class='five'></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li class='five'></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li class='five'></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li class='five'></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li class='five'></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <div class='hour'>
-          <div class='hand'></div>
+<div class="clock-wrapper">
+        <div class='clock-border'>
+            <div class='clock'>
+                <ul class='minute-marks'>
+                    <li class='five'></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li class='five'></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li class='five'></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li class='five'></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li class='five'></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li class='five'></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class='hour'>
+                    <div class='hand'></div>
+                </div>
+                <div class='minute'>
+                    <div class='hand'></div>
+                </div>
+                <div class='second'>
+                    <div class='hand'></div>
+                </div>
+            </div>
         </div>
-        <div class='minute'>
-          <div class='hand'></div>
-        </div>
-        <div class='second'>
-          <div class='hand'></div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-  
+</section>
+
 <script>
-  window.onload = () => {
-    initTime();
-  }
+    initTime()
+    function initTime() {
+        const now = new Date(Date.now() + 3000);
+        const perHour = 360 / 12;
+        const perHourMinute = perHour / 60;
+        const perSecond = 360 / 60;
+        const hour = document.querySelector(".hour");
+        setDeg(hour, (now.getHours() % 12) * perHour + now.getMinutes() * perHourMinute)
+        const minute = document.querySelector(".minute");
+        setDeg(minute, now.getMinutes() * perSecond + now.getSeconds() * perSecond / 60)
+        const second = document.querySelector(".second");
+        setDeg(second, now.getSeconds() * perSecond)
+    }
 
-  /**
-   * 时间初始化
-   */
-  function initTime() {
-    // 时钟动画加载时间为3秒，需补上
-    const now = new Date(Date.now() + 3000);
-    const perHour = 360 / 12;
-    const perHourMinute = perHour / 60;
-    const perSecond = 360 / 60;
-    // 设置"时"的角度
-    const hour = document.querySelector(".hour");
-    setDeg(hour, (now.getHours() % 12) * perHour + now.getMinutes() * perHourMinute);
-    // 设置"分"的角度
-    const minute = document.querySelector(".minute");
-    setDeg(minute, now.getMinutes() * perSecond + now.getSeconds() * perSecond / 60);
-    // 设置"秒"的角度
-    const second = document.querySelector(".second");
-    setDeg(second, now.getSeconds() * perSecond);
-  }
-
-  /**
-   * 设置角度，旋转元素
-   * @param element 元素
-   * @param deg 角度
-   */
-  function setDeg(element, deg) {
-    element.style.transform = "rotate(" + deg + "deg)";
-  }
+    function setDeg(element, deg) {
+        element.style.transform = "rotate(" + deg + "deg)";
+    }
 </script>
-  
+ 
 <style>
 .clock-wrapper {
     position: relative;
