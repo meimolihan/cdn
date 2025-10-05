@@ -1,11 +1,11 @@
 <!-- 左侧顶部滑入弹窗（完全收回版） -->
-<div id="copyToast" class="snack-left-top">哎嘿！复制成功🍬</div>
+<div id="copyToast" class="snack-left-top">✅ 哎嘿！复制成功 🍬</div>
 
 <script>
 /* ====== 代码块复制 ====== */
 (() => {
   const toast = document.getElementById('copyToast');
-  const show = (msg = '哎嘿！复制成功🍬') => {
+  const show = (msg = '✅ 哎嘿！复制成功 🍬') => {
     toast.textContent = msg;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
@@ -28,7 +28,7 @@
     const selectedText = window.getSelection().toString().trim();
     if (!selectedText) return;
     navigator.clipboard.writeText(selectedText)
-      .then(() => show('哎嘿！复制成功🍬'))
+      .then(() => show('✅ 哎嘿！复制成功 🍬'))
       .catch(err => console.warn(err));
   });
 })();
@@ -46,26 +46,30 @@
 /* ===== 左侧顶部滑入 Toast ===== */
 .snack-left-top{
   position:fixed;
-  left:20px;                                      /* 左侧 20 px 边距 */
-  top:calc(20px + env(safe-area-inset-top, 0px)); /* 顶部 20 px + 安全区 */
-  transform:translateX(calc(-100% - 20px));       /* 完全藏在屏幕外 */
-  max-width:70%;
+  left:20px;
+  top:calc(20px + env(safe-area-inset-top, 0px));
+  transform:translateX(calc(-100% - 20px));
+  width:300px;    /* 固定长度 */
+  height:60px;    /* 固定宽度 */
+  padding:0;
   margin:0;
   border:none;
-  border-radius:8px;
-  padding:10px 16px;
+  border-radius:15px;   /* 固定圆角 */
   background:var(--hover-text-color);
   color:#fff;
   box-shadow:4px 4px 14px rgba(0,0,0,.35);
   z-index:9999;
-  font-size:16px;
+  font-size:18px;              /* 字号改为 16 px */
   font-weight:bold;
-  line-height:1.4;
+  display:flex;                /* 弹性布局 */
+  align-items:center;          /* 垂直居中 */
+  justify-content:center;      /* 水平居中 */
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
   transition:transform .35s cubic-bezier(.4,0,.2,1);
 }
-
-/* 显示态：滑入到 left:20px 位置 */
+/* 显示态：滑入到可视位置 */
 .snack-left-top.show{
   transform:translateX(0);
 }
