@@ -1,8 +1,67 @@
-<!-- 左侧顶部滑入弹窗（完全收回版） -->
+<style>
+/* ===== 复制按钮 ===== */
+.copyCodeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background: #3d3c3c;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.copyCodeButton:hover {
+  background: var(--hover-text-color, #3d3c3c);
+  color: #fff;
+}
+
+/* ===== 左侧顶部滑入 Toast ===== */
+.snack-left-top {
+  position: fixed;
+  left: 20px;
+  top: calc(20px + env(safe-area-inset-top, 0px));
+  transform: translateX(calc(-100% - 20px));
+  width: 300px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 15px;
+  background: var(--hover-text-color, #3d3c3c);
+  color: #fff;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, .35);
+  z-index: 9999;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+}
+.snack-left-top.show {
+  transform: translateX(0);
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部滑入提示 -->
 <div id="copyToast" class="snack-left-top">✅ 哎嘿！复制成功 🍬</div>
 
+<!-- 以下只是演示用代码块，你可以删掉或保留 -->
+<pre style="position: relative;">
+<code>console.log('Hello, world!');</code>
+<button class="copyCodeButton">复制</button>
+</pre>
+
 <script>
-/* ====== 代码块复制 ====== */
+/* ===== 通用复制提示 ===== */
 (() => {
   const toast = document.getElementById('copyToast');
   const show = (msg = '✅ 哎嘿！复制成功 🍬') => {
@@ -11,66 +70,26 @@
     setTimeout(() => toast.classList.remove('show'), 2000);
   };
 
-  /* 1. 代码块按钮点击 */
-  document.querySelector('.article-content').addEventListener('click', e => {
+  /* 1. 代码块按钮点击复制（事件委托到整个文档，无需 .article-content） */
+  document.addEventListener('click', e => {
     if (!e.target.matches('.copyCodeButton')) return;
-    const wrap  = e.target.closest('pre') || e.target.closest('.highlight');
+    const wrap = e.target.closest('pre') || e.target.closest('.highlight');
     const codeTd = wrap?.querySelector('td:nth-child(2)') || wrap;
     const text = codeTd ? codeTd.textContent.trim() : '';
+    if (!text) return;
     navigator.clipboard.writeText(text)
       .then(() => show())
-      .catch(err => alert('复制失败：'+err));
+      .catch(err => alert('复制失败：' + err));
   });
 
-  /* 2. 全局选中复制（任何文本） */
-  document.addEventListener('copy', (e) => {
-    e.preventDefault();
+  /* 2. 全局划选复制提示（不再阻止默认行为） */
+  document.addEventListener('copy', () => {
     const selectedText = window.getSelection().toString().trim();
-    if (!selectedText) return;
-    navigator.clipboard.writeText(selectedText)
-      .then(() => show('✅ 哎嘿！复制成功 🍬'))
-      .catch(err => console.warn(err));
+    if (selectedText) {
+      navigator.clipboard.writeText(selectedText)
+        .then(() => show('✅ 哎嘿！复制成功 🍬'))
+        .catch(console.warn);
+    }
   });
 })();
 </script>
-
-<style>
-/* ===== 复制按钮 ===== */
-.copyCodeButton{
-  position:absolute;top:8px;right:8px;border-radius:4px;border:1px solid #333;
-  background:#3d3c3c;color:#fff;padding:4px 8px;font-size:12px;cursor:pointer;
-  transition:background .2s;
-}
-.copyCodeButton:hover{background:var(--hover-text-color);color:#fff}
-
-/* ===== 左侧顶部滑入 Toast ===== */
-.snack-left-top{
-  position:fixed;
-  left:20px;
-  top:calc(20px + env(safe-area-inset-top, 0px));
-  transform:translateX(calc(-100% - 20px));
-  width:300px;    /* 固定长度 */
-  height:60px;    /* 固定宽度 */
-  padding:0;
-  margin:0;
-  border:none;
-  border-radius:15px;   /* 固定圆角 */
-  background:var(--hover-text-color);
-  color:#fff;
-  box-shadow:4px 4px 14px rgba(0,0,0,.35);
-  z-index:9999;
-  font-size:18px;              /* 字号改为 16 px */
-  font-weight:bold;
-  display:flex;                /* 弹性布局 */
-  align-items:center;          /* 垂直居中 */
-  justify-content:center;      /* 水平居中 */
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  transition:transform .35s cubic-bezier(.4,0,.2,1);
-}
-/* 显示态：滑入到可视位置 */
-.snack-left-top.show{
-  transform:translateX(0);
-}
-</style>
